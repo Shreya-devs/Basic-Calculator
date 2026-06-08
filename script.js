@@ -41,11 +41,20 @@ const checkValidity=(expression)=>{
     }
      let lastChar=expression.slice(-1);
      let chars=["+","-","*","^","/","%"];
+//for the cases like 5++2
+     for(let i=0;i<expression.length-1;i++){
+        let current=expression[i];
+        let next=expression[i+1];
+        if(chars.includes(current)&& chars.includes(next)){
+            return false;
+        }
+     }
      for (let char of chars){
       if(lastChar===char){
        
         return false;
       }
+
      }
    return true;
 }
